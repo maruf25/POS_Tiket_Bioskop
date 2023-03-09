@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Livewire\Admin\AdminAddCouponsComponent;
+use App\Http\Livewire\Admin\AdminCouponsComponent;
+use App\Http\Livewire\Admin\AdminEditCouponsComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +23,7 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
+
+Route::get('/admin/coupons', AdminCouponsComponent::class)->name('admin.coupons');
+Route::get('/admin/coupons/add', AdminAddCouponsComponent::class)->name('admin.addcoupons');
+Route::get('/admin/coupons/edit/{idvoucher}', AdminEditCouponsComponent::class)->name('admin.editcoupons');
