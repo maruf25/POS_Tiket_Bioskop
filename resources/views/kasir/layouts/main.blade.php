@@ -4,11 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard Admin Cinema 19</title>
+    <title>Kasir</title>
 
     {{-- Bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
 
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
@@ -23,6 +26,11 @@
         }
     </style>
 
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sidebars.css') }}">
+    <link rel="stylesheet" href="../../../css/seat.css">
+
+
     @livewireStyles
 
     {{-- DatePicker --}}
@@ -36,19 +44,40 @@
 
 </head>
 
-<body>
+<body style="background-color: #D9D9D9">
+    {{-- <div class="d-flex flex-row m-0">
+        @include('kasir.layouts.sidebar')
+        <div class="container-fluid m-0">
+            <div class="flex-column m-0">
+                @include('kasir.layouts.header')
+                <div class="row">
+                    <div class="col-lg">
+                        @yield('content')
+                    </div>
+                    <div class="col-lg-4">
+                        @include('kasir.kasir')
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
 
-    @include('dashboard.layouts.header')
+    {{-- Tanpa Sidebar --}}
 
+    {{-- <main> --}}
     <div class="container-fluid">
+        @include('kasir.layouts.header')
         <div class="row">
-            {{-- @include('dashboard.layouts.sidebar') --}}
-
-            @yield('container')
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            </main>
+            <div class="col-lg mt-1">
+                @yield('content')
+            </div>
+            {{-- <div class="col-lg-4 mt-1" style="border-radius: 20px">
+                @include('livewire.kasir.kasir')
+            </div> --}}
         </div>
     </div>
+    {{-- </main> --}}
+
 
 
 
@@ -96,6 +125,9 @@
             )
         })
     </script>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
 
     {{-- <script type="module">
         import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';

@@ -7,6 +7,8 @@ use Livewire\Component;
 
 class AdminCouponsComponent extends Component
 {
+    public $idcoupon;
+    protected $listeners = ['deleteConfirmed' => 'deleteCoupon'];
     public function render()
     {
         $coupons = voucher::all();
@@ -17,9 +19,19 @@ class AdminCouponsComponent extends Component
             ->section('container');
     }
 
-    public function deleteCoupon($idvoucher)
+    public function deleteConfirmation($idvoucher)
     {
-        voucher::where('idvoucher', $idvoucher)->delete();
-        session()->flash('success', 'coupon succes delete');
+        $this->idcoupon = $idvoucher;
+        $this->dispatchBrowserEvent('show-delete-confirm');
+    }
+    public function deleteCoupon()
+    {
+        voucher::where('idvoucher', $this->idcoupon)->delete();
+        $this->dispatchBrowserEvent('couponDeleted');
+    }
+
+    public function cekView()
+    {
+        return view('dashboard.index');
     }
 }

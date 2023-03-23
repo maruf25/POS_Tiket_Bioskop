@@ -28,11 +28,12 @@
                     <td>{{ $coupon->expire_time }}</td>
                     <td>
                         <a href="coupons/edit/{{ $coupon->idvoucher }}" class="btn btn-warning">Edit</a>
-                        <button wire:click='deleteCoupon({{ $coupon->idvoucher }})'
+                        <button wire:click='deleteConfirmation({{ $coupon->idvoucher }})'
                             class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    <button wire:click.prefetch='cekView'>Cek View</button>
 </div>

@@ -14,7 +14,7 @@ class AdminEditCouponsComponent extends Component
         $vouchers = voucher::where('idvoucher', $idvoucher)->get();
         foreach ($vouchers as $voucher) {
             // if ($voucher) {
-            $this->id = $voucher->idvoucher;
+            $this->idvouchers = $voucher->idvoucher;
             $this->code = $voucher->disc_name;
             $this->value = $voucher->discount * 100;
             $this->start_date = $voucher->start_time;
@@ -31,6 +31,7 @@ class AdminEditCouponsComponent extends Component
 
     public function editCoupon()
     {
+        // dd($this->code, $this->value, $this->start_date, $this->exp_date);
         voucher::where('idvoucher', $this->idvouchers)->update([
             'disc_name' => $this->code,
             'discount' => $this->value / 100,
